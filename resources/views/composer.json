@@ -1,0 +1,5 @@
+{
+    "require": {
+        "laravel-doctrine/orm": "1.2.*"
+    }
+}
