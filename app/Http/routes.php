@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('sightings', 'SightingController@create');
+Route::get('index', 'SightingController@index');
+
+Route::post('addsighting', 'SightingController@save');

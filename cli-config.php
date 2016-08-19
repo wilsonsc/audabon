@@ -1,19 +1,16 @@
 <?php
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
-use LaravelDoctrine\ORM\Facades\EntityManager;
+use LaravelDoctrine\ORM\DoctrineServiceProvider;
 
-// replace with file to your own project bootstrap
-require_once 'bootstrap/autoload.php';
-require_once 'bootstrap/app.php';
+/** @var Application $app */
+$app = require_once __DIR__.'/bootstrap/app.php';
 
-ini_set('display_errors', -1);
-ini_set('error_reporting', -1);
+/** @var Illuminate\Contracts\Http\Kernel $kernel */
+$kernel = $app->make('Illuminate\Contracts\Console\Kernel');
+$kernel->bootstrap();
 
-EntityManager::flush();
+$app->boot();
 
-//$app->make('Doctrine\ORM\EntityManagerInterface');
-// replace with mechanism to retrieve EntityManager in your app
-$entityManager = EntityManager::getFacadeRoot();
+$entityManager = $app->make('Doctrine\ORM\EntityManager');
 
-return ConsoleRunner::createHelperSet($entityManager);
-
+return ConsoleRunner::createHelperSet($entityManager); 

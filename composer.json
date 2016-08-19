@@ -18,10 +18,12 @@
     },
     "autoload": {
         "classmap": [
-            "database"
+            "database",
+          "app/src"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Audabon\\": "app/src"
         }
     },
     "autoload-dev": {
