@@ -1,11 +1,31 @@
+:root {
+    --primary-color: lightgray;
+    --primary-border: 2px solid green;
+}
+
 fieldset {
     width: 500px;
+    border: var(--primary-border)
+}
+
+body {
+    background-color: var(--primary-color);
+}
+
+details {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+h2 {
+    display: inline;
+    color: darkblue;
 }
 
 a {
     color: black;
     padding: 3px;
-    border: 2px solid darkgreen;
+    border: var(--primary-border);
 
 }
 
@@ -16,19 +36,21 @@ label {
 }
 
 legend {
-    font-size: xx-large;
+    font-size: large;
 }
 
 input {
-    border: 2px solid darkgreen;
+    border: var(--primary-border);
     border-radius: 4px;
     color: black;
     width: 240px;
+    background-color: var(--primary-color);
 }
 
 textarea {
-    border: 2px solid darkgreen;
+    border: var(--primary-border);
     border-radius: 4px;
     width: 240px;
     height: 50px;
+    background-color: var(--primary-color);
 }

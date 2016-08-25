@@ -17,5 +17,5 @@ Route::get('/', function () {
 
 Route::get('sightings', 'SightingController@create');
 Route::get('index', 'SightingController@index');
-
 Route::post('addsighting', 'SightingController@save');
+Route::get('birdIndex', 'BirdController@index');

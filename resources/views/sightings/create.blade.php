@@ -15,8 +15,9 @@
             <p><label>Location: </label> <input type="text" name="location" required> </p>
             <p><label>Species: </label> <input type="text" name="species" required> </p>
             <p><label>Description: </label> <textarea name="description"> </textarea> </p>
+            <input type="submit">
         </fieldset>
-        <input type="submit">
+
     </form>
 
 @endsection

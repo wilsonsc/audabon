@@ -5,9 +5,17 @@ namespace Audabon\Entities;
 use Doctrine\ORM\Mapping as ORM;
 use \DateTime;
 
-/** @ORM\Entity */
+/**
+ * @ORM\Entity(repositoryClass="Audabon\Repositories\SightingRepository")
+ */
 class Sighting
 {
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Bird", inversedBy="sighting", cascade={"persist"})
+     */
+    private $bird;
+
     /**
      * @ORM\Id @ORM\Column(type="integer")
      * @ORM\GeneratedValue
@@ -23,8 +31,6 @@ class Sighting
     private $date;
     /** @ORM\Column(type="string") */
     private $location;
-    /** @ORM\Column(type="string") */
-    private $species;
     /** @ORM\Column(type="text") */
     private $description;
 
@@ -127,17 +133,17 @@ class Sighting
     /**
      * @return mixed
      */
-    public function getSpecies()
+    public function getBird()
     {
-        return $this->species;
+        return $this->bird;
     }
 
     /**
-     * @param mixed $species
+     * @param mixed $bird
      */
-    public function setSpecies($species)
+    public function setBird($bird)
     {
-        $this->species = $species;
+        $this->bird = $bird;
     }
 
     /**

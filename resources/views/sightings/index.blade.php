@@ -8,12 +8,12 @@
         foreach ($sightings as $sighting): ?>
         <details>
             <summary>
-                <b> <?php echo($sighting->getSpecies()); ?> </b>
+                <h2> <?php echo($sighting->getBird()->getSpecies()); ?> </h2>
             </summary>
             <ul>
-                <p><b>Date: </b> <?php echo($sighting->getDate()->format('m-d-Y h:i A')); ?> </p>
-                <p><b>Location: </b> <?php echo($sighting->getLocation()); ?> </p>
-                <p><b>Description: </b> <?php echo($sighting->getDescription()); ?> </p>
+                <b>Date: </b> <?php echo($sighting->getDate()->format('m-d-Y h:i A')); ?> <br>
+                <b>Location: </b> <?php echo($sighting->getLocation()); ?> <br>
+                <b>Description: </b> <?php echo($sighting->getDescription()); ?> <br>
             </ul>
         </details>
         <?php endforeach?>
