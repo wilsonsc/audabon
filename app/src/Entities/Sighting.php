@@ -15,9 +15,9 @@ class Sighting
      * @ORM\ManyToOne(targetEntity="Bird", inversedBy="sighting", cascade={"persist"})
      */
     private $bird;
-
     /**
-     * @ORM\Id @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue
      */
     private $id;

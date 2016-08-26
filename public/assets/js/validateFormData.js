@@ -2,7 +2,7 @@
  * Created by scottwilson on 8/19/16.
  */
 function validateFormData() {
-    var x = document.forms["submitSightingForm"]["eMail"].value;
+    var x = document.forms["submitSightingForm"]["email"].value;
 
     //Checks for the occurance of a @ and . in the field
     if ((x.indexOf("@") == -1 || x.indexOf(".") == -1) &&

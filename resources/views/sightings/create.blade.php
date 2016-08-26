@@ -19,5 +19,5 @@
         </fieldset>
 
     </form>
-
+<script type="text/javascript" src="/assets/js/validateFormData.js"> </script>
 @endsection

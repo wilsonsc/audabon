@@ -16,6 +16,7 @@ class Bird {
 
     public function __construct() {
         $this->features = new ArrayCollection();
+        $this->sighting = array();
     }
 
     /**
@@ -73,20 +74,30 @@ class Bird {
         //Corresponding English translations of each quarter of the year
         $namesOfSeasons = array("Winter", "Spring", "Summer", "Fall");
 
+        $totalSightings = array_sum($numSightingsPerSeason);
+
+        if ($totalSightings == 0) {
+            return "No sightings have been recorded";
+        }
+
         //Format the return string
         if (sizeOf($mostFrequent) == 1) {
             return $namesOfSeasons[$mostFrequent[0]] . " " . $numSightingsPerSeason[$mostFrequent[0]] . "/" .
-            array_sum($numSightingsPerSeason) . " (" .
-            ($numSightingsPerSeason[$mostFrequent[0]] / array_sum($numSightingsPerSeason) * 100) . "%)" ;
+            $totalSightings . " (" . ($numSightingsPerSeason[$mostFrequent[0]] / $totalSightings * 100) . "%)";
         }
         else {
             $frequentSeasons = $namesOfSeasons[$mostFrequent[0]];
             for ($i = 1; $i < (sizeOf($mostFrequent)); $i++) {
-                $frequentSeasons .= " and " . $namesOfSeasons[$mostFrequent[$i]];
+                if (sizeOf($mostFrequent) - $i == 1) {
+                    $frequentSeasons .= " and " . $namesOfSeasons[$mostFrequent[$i]];
+                }
+                else {
+                    $frequentSeasons .= ", " . $namesOfSeasons[$mostFrequent[$i]];
+                }
             }
-            $frequentSeasons .= " equally sighted " . $numSightingsPerSeason[$mostFrequent[0]] . "/" .
-                array_sum($numSightingsPerSeason) . " (" . ($numSightingsPerSeason[$mostFrequent[0]]
-                    / array_sum($numSightingsPerSeason) * 100) . "%)" ;
+            $frequentSeasons .= " equally sighted " . $numSightingsPerSeason[$mostFrequent[0]]
+                . "/" . $totalSightings . " (" . ($numSightingsPerSeason[$mostFrequent[0]]
+                    / $totalSightings * 100) . "%)" ;
 
             return $frequentSeasons;
         }
@@ -122,6 +133,18 @@ class Bird {
     public function setSighting($sighting)
     {
         $this->sighting = $sighting;
+    }
+
+    public function addSighting($sighting) {
+
+        if (sizeOf($this->getSighting()) == 0){
+            $this->setSighting(array($sighting));
+        }
+        else {
+            $appendSighting = $this->getSighting();
+            $appendSighting[] = $sighting;
+            $this->setSighting($appendSighting);
+        }
     }
 
     /**

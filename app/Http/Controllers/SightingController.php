@@ -11,7 +11,7 @@ use App\Http\Requests;
 
 class SightingController extends Controller
 {
-    //
+
     public function create() {
         return view("sightings/create");
     }
